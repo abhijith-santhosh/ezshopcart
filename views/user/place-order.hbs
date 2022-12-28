@@ -1,0 +1,286 @@
+
+    
+  {{>usernav}}
+  
+       <h2>Choose Address</h2>
+    <aside class="col-lg-3" style="width:240px ">
+                  <div class="summary">
+              
+         <button type="button" class="btn btn-primary btn-lg" id="setAddress">USE THIS ADDRESS</button>
+              <br>
+              <p class="font-weight-bold" style="font-style:italic; margin-top:10px; ">{{savedAddress.name}}<br>{{savedAddress.address}}<br>{{savedAddress.pincode}}<br>{{savedAddress.town}} <br>{{savedAddress.email}} <br>{{savedAddress.phone}}</p>
+              </label>
+            </div>
+            </aside>
+
+       
+                  
+        <div class="row">
+          <form  id="checkout-form" >
+          <div class="col-md-6 mb-5 mb-md-0">
+            <h2 class="h3 mb-3 text-black">Ship  to new address</h2>
+            <div class="p-3 p-lg-5 border">
+              
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="name" name="name">
+                </div>
+               
+              </div>
+
+              <div class="form-group row">
+               
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="address" name="address" placeholder="">
+                </div>
+              </div>
+
+              
+
+              <div class="form-group row">
+               
+                <div class="col-md-6">
+                  <label for="c_postal_zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="post" name="post">
+                </div>
+              </div>
+
+              <div class="form-group row mb-5">
+                <div class="col-md-6">
+                  <label for="c_email_address" class="text-black">Email Address <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="email" name="email">
+                </div>
+                <div class="col-md-6">
+                  <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+                  <input type="text" name="userId" id="" value="{{user._id}}" hidden>
+                </div>
+              </div>
+
+             
+
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+
+           
+            
+            
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h2 class="h3 mb-3 text-black">Your Order</h2>
+                <div class="p-3 p-lg-5 border">
+                  <table class="table site-block-order-table mb-5">
+                    
+                   
+                    <tbody>
+                        <tr>
+                        <td class="text-black font-weight-bold"><strong>Actual amount</strong></td>
+                        <td class="text-black font-weight-bold"  id="actual-amount"><strong>₹{{total}}</strong></td>
+                      </tr>
+                        <tr>
+                        <td class="text-black font-weight-bold"><strong>Coupon discount</strong></td>
+                        <td class="text-black font-weight-bold"  id="off-amount"><strong>0</strong></td>
+                      </tr>
+                     
+                      <tr>
+                        <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                        <td class="text-black font-weight-bold"  id="total-amount"><strong>₹{{total}}</strong></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                    
+                  <div class="col-md-5 col-sm-5 col-xs-12">
+																						<div class="">
+																							<h2>Payment Method</h2>
+																						</div>
+																
+                         
+                          
+                  <div class="border p-3 mb-3">
+                    
+                    <label class="radio-inline"  >
+                         <input type="radio" name="payment-method" value="COD" checked> COD
+                      </label>
+                  
+                  </div>
+
+                  <div class="border p-3 mb-3">
+                   
+                   <label  class="radio-inline mt-2">
+                    <input type="radio" name="payment-method" value="ONLINE">
+                      Online Payment
+                   </label>
+                   </div>
+
+              
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit "onclick="">Check Out</button>
+                  </div>
+
+                
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </form>
+         <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 mt-3">
+                  <div class="theme-box">
+                    <h4>Apply coupon code here</h4>
+                    <p>Enter your coupon code</p>
+                    <form id="discount-coupon" >
+                      <input type="text" name="coupon" />
+                      <button type="submit" class="btn btn-default right-cart">Apply code</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/main.js"></script>
+    
+    
+  </body>
+  
+
+
+   <script>
+      $("#discount-coupon").submit((e) => {
+        console.log("ssss")
+        e.preventDefault()
+        $.ajax({
+          url: '/check-coupon',
+          method: 'post',
+          data: $('#discount-coupon').serialize(),
+          success: (response) => {
+            console.log(response)
+            if(response.actual){
+              document.getElementById('total-amount').innerHTML = response.totalAmount
+              document.getElementById('off-amount').innerHTML = response.discount
+              document.getElementById('actual-amount').innerHTML = response.actual
+              document.getElementById('couponamount').value=response.discount
+            }
+          }
+        })
+      })
+    </script>
+ 
+
+  <script>
+  $("#checkout-form").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+     
+      url: '/place-order',
+      method: 'post',
+      data: $('#checkout-form').serialize(),
+      success: (response) => {
+        alert(response)
+        if (response.codSuccess) {
+          location.href = '/order-success'
+        }
+        else {
+          razorpayPayment(response);
+        }
+      }
+    })
+  }
+  )
+  function razorpayPayment(order) {
+    var options = {
+      "key": "rzp_test_uhnKcQy1446ov3", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "Abhijith Shoppingcart",
+      "description": "Test Transaction",
+      "image": "https://example.com/your_logo",
+      "order_id": order.id, //This is a sample Order ID. Pass the id obtained in the response of Step 1
+      "handler": function (response) {
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature)
+        verifyPayment(response, order)
+      },
+      "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+      "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+      },
+      "notes": {
+        "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    }
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  }
+
+  function varifyPayment(payment, order) {
+        $.ajax({
+          url: '/verify-payment',
+          data: {
+            payment,
+            order,
+          },
+          method: 'post',
+          success: (response) => {
+            console.log(response)
+            if (response.status) {
+              location.href = '/order-success'
+
+
+            } else {
+              { alert("Payment failed")  } 
+            }
+          }
+        })
+      }
+</script>
+
+
+<script>
+        $("#setAddress").click(function(event) {
+            $('#country').val("India");
+        });
+        $("#setAddress").click(function(event) {
+            $('#post').val('{{savedAddress.pincode}}');
+        });
+        $("#setAddress").click(function(event) {
+            $('#address').val('{{savedAddress.address}}');
+        });
+        $("#setAddress").click(function(event) {
+            $('#email').val('{{savedAddress.email}}');
+        });
+        $("#setAddress").click(function(event) {
+            $('#name').val('{{savedAddress.name}}');
+        });
+        $("#setAddress").click(function(event) {
+            $('#phone').val('{{savedAddress.phone}}');
+        });
+    </script>

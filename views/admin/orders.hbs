@@ -1,0 +1,156 @@
+{{!-- {{>adminside}}
+<section>
+    <div class="container" >
+     
+       <table class="table table  mt-4">
+  <thead>
+    <tr>
+     
+      <th scope="col">ADDRESS</th>
+      <th scope="col">PIN CODE</th>
+      <th scope="col">MOBILE</th>
+       <th scope="col">EMAIL</th>
+      <th scope="col">AMOUNT</th>
+      <th scope="col">PAYMENT METHOD</th>
+      <th scope="col">STATUS</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orders}}
+    <tr>
+     
+      <td>{{this.deliveryDetails.address}}</td>
+      <td>{{this.deliveryDetails.post}}</td>
+      <td>{{this.deliveryDetails.phone}}</td>
+      <td>{{this.deliveryDetails.email}}</td>
+       <td>{{this.totalAmount}}</td>
+       <td>{{this.paymentMethod}}</td>
+       <td>{{this.status}}</td>
+      
+      <td>
+       <a href="/view-order-products/{{this._id}}"class="btn btn-primary"> VIEW PRODUCTS</a>
+       </td>
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>
+
+{{>adminfooter}} --}}
+
+
+{{>adminside}}
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active">Products</li>
+          <a href="/admin/dynamictable"><li class="breadcrumb-item active">PDF</li></a> 
+        
+          
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="">
+          <div class="row">
+
+            <!-- Top Selling -->
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+
+                  <div class="card-body pb-">
+                  <h5 class="card-title"> ALL ORDERS</h5>
+                 
+                 <a href="/admin/dynamictable"><button type="button" class="btn btn-outline-dark">Sales report</button></a> 
+                  <table class="table table  mt-4">
+                    <thead>
+                      <tr>
+                        <th scope="col">NO</th>
+                        <th scope="col">USER ID</th>
+                         <th scope="col">DATE</th>
+                        <th scope="col">ADDRESS</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">AMOUNT</th>
+                        <th scope="col">PAYMENT</th>
+                        <th scope="col">STATUS</th>
+                         <th scope="col">ACTION</th>
+                        {{!-- <button ><a href="/admin/add-products" class="btm btn-primary"> Add product</a></button> --}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {{#each orders}}
+                      <tr>
+                        <th scope="row">{{inc @index}}</th>
+                        <td>{{this.userId}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.deliveryDetails.address}}</td>
+                        <td>{{this.deliveryDetails.name}}</td>
+                        <td>{{this.totalAmount}}</td>
+                       <td>{{this.paymentMethod}}</td>
+
+          <form action="/admin/changeStatus/{{this._id}}" method="post">
+                {{#if this.cancelStatus}}
+                      
+                    <th style="font-weight: 300;">
+										<select id="changeStatus" name="changeStatus">
+											<option>{{this.status}}</option>
+											<option>packed</option>
+											<option>shipped</option>
+											<option>deliverd</option>
+										</select>
+									</th>
+               {{else}}
+
+               <th style="font-weight: 300;">
+										<select id="changeStatus" name="changeStatus">
+											<option>{{this.status}}</option>
+											<option>cancelled</option>
+											<option>packed</option>
+											<option>shipped</option>
+											<option>deliverd</option>
+										</select>
+									</th>
+                  {{/if}}
+                  <th>
+										
+										
+                    <button type="subit" class="btn btn-outline-warning">Update</button>
+									</th>
+
+                  </form>
+
+                  
+                  <th> <a href="/view-order-products  /{{this._id}}" > <button type="button" class="btn btn-outline-info">View</button></a></th>
+                       
+                      </tr>
+                    {{/each}}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Top Selling -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+       
+      </div>
+    </section>
+
+  </main
+{{>adminfooter}}
+
+</html>

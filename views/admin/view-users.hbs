@@ -1,0 +1,74 @@
+
+
+
+{{>adminside}}
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Products</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="">
+          <div class="row">
+
+            <!-- Top Selling -->
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+
+                  <div class="card-body pb-">
+                  <h5 class="card-title">users</h5>
+                  <table class="table table  mt-4">
+                    <thead>
+                      <tr>
+                         <th scope="col">NO</th>
+                         <th scope="col">NAME</th>
+                         <th scope="col">EMAIL</th>
+                         <th scope="col">MOBILE</th>
+                          <th scope="col">STATUS</th>
+                            <th scope="col">ACTION</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#each users}}
+                      <tr>
+                        <th scope="row">{{inc @index}}</th>
+                        <td>{{this.Name}}</td>
+                        <td>{{this.Email}}</td>
+                        <td>{{this.Mobile}}</td>
+                         <td>{{this.status}}</td>
+                       <td>
+                          <a href=" /admin/block/{{this._id}}" class="btn btn-danger">BLOCK</a>
+                          <a href="/admin/unblock/{{this._id}}" class="btn btn-primary">UNBLOCK</a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Top Selling -->
+
+          </div>
+        </div><!-- End Left side columns -->
+
+       
+      </div>
+    </section>
+
+  </main
+{{>adminfooter}}
+
+

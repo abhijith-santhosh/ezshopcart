@@ -1,0 +1,27 @@
+ {{>usernav}}
+ <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="title-section mb-5 col-12">
+            <h2 class="text-uppercase">PRODUCTS</h2>
+          </div>
+        </div>
+        <div class="row">
+        {{#each products}}
+          <div class="col-lg-4 col-md-6 item-entry mb-4">
+            <a href="/product-view/{{this._id}}" class="product-item md-height bg-gray d-block">
+              <img src="/images/{{this.image.[0]}}" alt="Image" class="img-fluid">
+              
+            </a>
+            <button onclick="addToCart('{{this._id}}')"  class="btn btn-black rounded-4" style="width: 350px;"> Add Cart </button>  
+            <a href="/add-to-wishlist/{{this._id}}"> <button   class="btn btn-primary rounded-4" style="width: 350px;"> Add Wishlist </button>  </a>
+            <h2 class="item-title"><a href="#">{{this.Name}}</a></h2>
+            <strong class="item-price">₹ {{this.Prize}}</strong>
+            <h5 class="item-title"><a href="#">{{this.Description}}</a></h5>
+          </div>
+          {{/each }}
+   
+
+        </div>
+      </div>
+    </div> 

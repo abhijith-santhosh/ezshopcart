@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../multer"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "multer"
+	}
+}

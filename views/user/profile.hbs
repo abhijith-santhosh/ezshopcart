@@ -1,0 +1,91 @@
+{{>usernav}}
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            {{!-- <li class="breadcrumb-item"><a href="#">User</a></li> --}}
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="data:image/png;base64,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" alt="avatar"
+            
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3" >{{user.name}} <br>{{user.email}}</h5>
+            
+           
+            <a href="/orders"><button type="button" class="btn btn-outline-warning">My order</button></a><a href="/wishlist"><button type="button" class="btn btn-outline-info">Wishlist</button></a>
+             <a href="/updateprofile"><button type="button" class="btn btn-secondary btn-lg " >UPDATE PROFILE</button></a> 
+           
+          </div>
+          
+        </div>
+      
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.name}}</p>
+              </div>
+              
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.email}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.phone}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.address}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Town</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{user.town}}</p>
+                <a href="/newadd"><button>ADD NEW ADDRESS</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+{{>userfoot}}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ShopMax &mdash; Colorlib e-Commerce Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/user/https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+    <link rel="stylesheet" href="/user/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/user/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/user/css/magnific-popup.css">
+    <link rel="stylesheet" href="/user/css/jquery-ui.css">
+    <link rel="stylesheet" href="/user/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/user/css/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="/user/css/aos.css">
+
+    <link rel="stylesheet" href="/user/css/style.css">
+    
+  </head>
+  <body>
+  
+  <div class="site-wrap">
+    
+
+    <div class="site-navbar bg-white py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>  
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="/" class="js-logo-clone"> 𝓢ℍ𝐨𝓟𝐌Δⓧ </a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="has-children active">
+                  <a href="/">𝐻𝒪𝑀𝐸</a>
+                  <ul class="dropdown">
+                    <li><a href="/men">Men</a></li>
+                    <li><a href="/women">Women</a></li>
+                    {{!-- <li><a href="#">Menu Three</a></li> --}}
+                    {{!-- <li class="has-children"> 
+                      <a href="#">Sub Menu</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                      </ul>
+                    </li> --}}
+                  </ul>
+                </li>
+                
+                <li><a href="/">Shop</a></li>
+                {{!-- <li><a href="/">Catalogue</a></li> --}}
+                {{!-- <li><a href="/">New Arrivals</a></li> --}}
+                {{!-- <li><a href="/">Contact</a></li> --}}
+                <li><a href="/profile">𝓟𝓡𝓞𝓕𝓘𝓛𝓔</a></li>
+                <li><a href="/orders">𝓜𝓨 𝓞𝓡𝓓𝓔𝓡𝓢</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="/wishlist" class="icons-btn d-inline-block"><span class="icon-heart-o"> <h6> <span class="badge badge-secondary"id="wish-count">{{wishCount}}</span></h6>
+             
+            </span></a>
+            <a href="/cart" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>
+              <span class="number" id="cart-count">{{cartCount}}</span>
+            </a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
+              <span class="icon-menu"></span>
+              </a>
+          </div>
+          <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle bg-light text-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   {{#if user}}
+     {{user.Name}}
+     {{else}}
+      user
+  {{/if}}
+   
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+     {{#if user}}
+     <a class="dropdown-item" href="/logout">Logout</a>
+     {{else}}
+      <a class="dropdown-item" href="/login">Login</a>
+  {{/if}}
+    
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>

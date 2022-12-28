@@ -1,0 +1,61 @@
+ 
+ {{>usernav}}
+ <div class="col-md-12 col-sm-12">
+			<h4 class="profile_addresstab">Enter New Address Here</h4>
+			 <div class="personal-form">
+					   <div class="userleft">
+						   <form action="/newadd" method="post" >
+						      <label for="">Name</label> 
+						   
+							   <input class="form-control" type="text" name="name" id="name" placeholder="Name">
+							   
+							   <label for="">Address</label> 
+						   
+							   <input class="form-control" type="text" name="address" id="address" placeholder="Address">
+							   
+							     <label for="">Email</label> 
+						   
+							   <input class="form-control" type="text" name="email" id="email" placeholder="Email	">
+							   <label for="">Pincode</label>
+							   
+							   <input class="form-control" type="text" name="pincode" id="pincode" placeholder="Pincode">
+						   
+							   <label for="">Town</label>
+
+
+							   <input class="form-control" type="text" name="town" id="town" placeholder="Town">
+
+							    <label for="">Phone</label> 
+						   
+							   <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone">
+							   <input  type="text" name="userId" value="{{user._id}}" hidden>
+
+                            <button type="submit" class="btn btn-outline-warning">Save</button>
+						   </form>
+
+					   </div>
+					  
+				   </div>
+                   <div class="col-md-12 col-sm-12 col-xs-12">
+			
+					{{!-- <h4 class="profile_addresstab">Choose Address</h4>
+					
+					<div class="col-md-6 col-sm-6 col-xs-12 multiple_address">
+						{{#each savedAddress}}
+						<p>{{this.address.address}}</p>
+						<p>{{this.address.pincode}}</p>
+						<p>{{this.address.town}}</p>
+						{{/each}}
+					</div> --}}
+			
+					<div class="col-md-6 col-sm-6 col-xs-12 multiple_address">
+						{{!-- <label class="radio-inline">
+							<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Corrazone ,666888,
+							cochin
+						</label> --}}
+					</div>
+			
+				</div>
+
+			</div>
+			{{>userfoot}}

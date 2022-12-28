@@ -1,0 +1,64 @@
+{{>usernav}}
+<section>
+    <div class="container" >
+     
+       <table class="table table  mt-4">
+  <thead>
+    <tr>
+     
+      <th scope="col">ADDRESS</th>
+      <th scope="col">PIN CODE</th>
+      <th scope="col">MOBILE</th>
+       <th scope="col">EMAIL</th>
+      <th scope="col">AMOUNT</th>
+      <th scope="col">PAYMENT </th>
+      <th scope="col">STATUS</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orders}}
+    <tr>
+     
+      <td>{{this.deliveryDetails.address}}</td>
+      <td>{{this.deliveryDetails.post}}</td>
+      <td>{{this.deliveryDetails.phone}}</td>
+      <td>{{this.deliveryDetails.email}}</td>
+       <td>{{this.totalAmount}}</td>
+       <td>{{this.paymentMethod}}</td>
+       <td>{{this.status}}</td>
+
+        {{#if_eq this.status "cancelled" }}	
+            <td>
+                <a href="/view-order-products/{{this._id}}"class="btn btn-primary disabled">View Products</a>
+            </td>
+            <td>
+            <a href="/cancelOrder/{{this._id}}" class="w-100 btn btn-danger disabled">Cancel Order</a>
+            </td>
+            {{else}}
+            {{#if_eq this.status "Delivered"}}
+            <td>
+                <a href="/view-order-products/{{this._id}}"class="btn btn-primary disabled">View Products</a>
+            </td>
+            <td>
+            <a href="/cancelOrder/{{this._id}}" class="w-100 btn btn-danger disabled">Cancel Order</a>
+            </td>
+            {{else}}
+            <td>
+                <a href="/view-order-products/{{this._id}}"class="btn btn-primary">View Products</a>
+            </td>
+            <td>
+            <a href="/cancelOrder/{{this._id}}" class="w-100 btn btn-danger">Cancel Order</a>
+            </td>
+            {{/if_eq}}
+            {{/if_eq}}
+      
+      {{!-- <td>
+       <a href="/view-order-products/{{this._id}}"class="btn btn-primary"> VIEW PRODUCTS</a>
+       </td> --}}
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+    </div>
+</section>

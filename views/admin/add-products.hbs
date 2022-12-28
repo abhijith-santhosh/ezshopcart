@@ -1,0 +1,47 @@
+
+<section>
+   
+    
+    <div class="container mt-4 ">
+        <div class="row">
+            
+            <div class="col-md-6">
+                <a href="/admin/dashboard"> <button type="button" class="btn btn-outline-dark">Back</button></a>
+                <h1 class="text-center">ADD PRODUCTS </h1>
+                <form action="/admin/add-products" method="post" enctype="multipart/form-data">
+                    <label for="">Name</label>
+                    <input type="text" name="Name" class="form-control">
+
+                    <div class="col-12">
+									<label for="inputCategory"  class="form-label">Category</label>
+									<select class="form-select"  name="Category" id="inputCategory">
+										<option></option>
+										<option  value="Men">Men</option>
+									    <option value="Women">Women</option>
+									</select>
+								  </div>
+                    
+                     <label for="">Prize</label>
+                    <input type="text" name="Prize" class="form-control">
+                    
+                     <label for="">Description</label>
+                    <input type="text" name="Description" class="form-control">
+                    
+                     <label for="">Image</label>
+                    <input type="file" name="image"  class="form-control" multiple>
+                     <label for="">Image</label>
+                    <input type="file" name="image"  class="form-control" multiple>
+                     <label for="">Image</label>
+                    <input type="file" name="image"  class="form-control" multiple>
+                     <label for="">Image</label>
+                    <input type="file" name="image"  class="form-control" multiple>
+                    
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
+                    
+                </form>
+                
+
+            </div>
+        </div>
+    </div>
+</section>

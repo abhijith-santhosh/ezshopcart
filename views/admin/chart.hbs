@@ -1,0 +1,97 @@
+
+{{>adminside}}
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+       <div class="container mt-4">
+        <div class="row">
+             <h5 class="card-title"></h5>
+
+<canvas id="myChart" ></canvas>
+<div style="margin-left: 110px;">
+<div class="m-5" id="myPlot" style="width:60%;max-width:700px margin-left:100px"></div>
+</div>
+</div>
+
+</div>
+<script>
+var xValues = ['COD','ONLINE'];
+var yValues = [45,85];
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Doughnut chart"
+    }
+  }
+});
+</script>
+
+
+</body>
+
+</div>
+
+
+
+
+
+{{!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+
+<script>
+var xArray = [50,60,70,80,90,100,110,120,130,140,150];
+var yArray = [7,8,8,9,9,9,10,11,14,14,15];
+
+// Define Data
+var data = [{
+  x: xArray,
+  y: yArray,
+  mode:"lines"
+}];
+
+// Define Layout
+var layout = {
+  xaxis: {range: [40, 160], title: "Square Meters"},
+  yaxis: {range: [5, 16], title: "Price in Millions"},  
+  title: "House Prices vs. Size"
+};
+
+// Display using Plotly
+Plotly.newPlot("myPlot", data, layout);
+</script>
+
+
+<script>
+var xArray = ['week1','week2','week3','week4',];
+var yArray = [55, 49, 44, 24, 15];
+
+var layout = {title:"World Wide Wine Production"};
+
+var data = [{labels:xArray, values:yArray, type:"pie"}];
+
+Plotly.newPlot("myPlot", data, layout);
+</script> --}}
+
+
+

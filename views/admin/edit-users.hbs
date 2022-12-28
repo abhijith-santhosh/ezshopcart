@@ -1,0 +1,21 @@
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="text-center">EDIT  USER </h1>
+                <form action="/admin/edit-users/{{users._id}}" method="post" enctype="multipart/form-data">
+                    <label for="">Name</label>
+                    <input type="text" name="Name" class="form-control" value="{{users.Name}}" >
+
+                    <label for="">Email</label>
+                    <input type="text" name="Email" class="form-control" value="{{users.Email}}">
+                    
+                     <label for="">Mobile No</label>
+                    <input type="text" name="Mobile" class="form-control" value="{{users.Mobile}}">
+                  <button type="submit" class="btn btn-success mt-4">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
