@@ -96,9 +96,7 @@ router.route("/orders").get( function (req, res, next) {
 
 
 
-  // router.get('/dynamictable',function(req,res){
-  //   res.render('admin/dynamictable')
-  // })
+ 
   router.route("/dynamictable").get( function (req, res, next) {
     try{
     userHelpers.getUserOrders().then((orders) => {
@@ -109,9 +107,7 @@ router.route("/orders").get( function (req, res, next) {
   }
   });
 
- 
-
-    let fileStorageEngine = multer.diskStorage({
+     let fileStorageEngine = multer.diskStorage({
       destination: (req, file, cb) => {
         cb(null, "public/images");
       },
@@ -133,7 +129,7 @@ router.route("/orders").get( function (req, res, next) {
         });
         req.body.image = filenames;
         await productHelpers.addProduct(req.body).then(() => {
-          console.log("add product reached")
+
           
         });
       });
@@ -145,11 +141,15 @@ router.route("/orders").get( function (req, res, next) {
             //  DELETE================ PRODUCT=================
 
     router.get('/delete-product/:id',(req,res)=>{
+    try{
       let proId=req.params.id
       console.log(proId);
       productHelpers.deleteProduct(proId).then((response)=>{
           res.redirect('/admin/')
       })
+    }catch(err){
+      res.render("admin/404");
+    }
 
     })
 
@@ -174,7 +174,7 @@ router.route("/orders").get( function (req, res, next) {
         },
       });
     }catch(err) {
-      res.render("user/404");
+      res.render("admin/404");
       }
 
 router.post('/edit-product/:id', upload.array("image"), async(req, res) => {
@@ -202,38 +202,25 @@ router.get('/login',(req,res)=>{
   }
 })
 
-// router.post('/login', function(req, res) {
-//   console.log(req.body.userName);
-//   console.log(req.body.password);
-  
-//   if(req.body.userName==credentials.userName && req.body.password==credentials.password)
-//   { 
-//     req.session.adminLogged=true;
-   
-//     res.redirect('/admin',)
-// }
-// else{
-//    req.session.adminErr=true
-//    req.session.loginErr = "Invalid Admin name or Password";
-//   res.redirect('/')
-// }
-   
-// })
+
 
 router.post('/login',(req,res)=>{
  
+   try{
     if(req.body.userName==credentials.userName && req.body.password==credentials.password){
       req.session.adminloggedIn=true
       req.session.admin=response.admin
       if(response.status){
         res.redirect('/')
       }
-     
-    }else{
+     }else{
       req.session.logginErr="Invalid user name or Password"
       res.redirect('/login')
     }
   
+   }catch{
+    res.render("admin/404");
+   }
 
 })   
 
@@ -244,9 +231,7 @@ router.post('/login',(req,res)=>{
 /*admin logout*/ 
 
 router.get('/logout', (req, res)=>{
-  
-  // req.session.adminLogged=""
-  // res.redirect('/admin')
+
   req.session.destroy()
   res.redirect('/')
 });
@@ -265,7 +250,7 @@ router.get("/block/:id", (req, res) => {
     res.redirect("admin/view-users");
   });
 }catch(err) {
-  res.render("user/404");
+  res.render("admin/404");
 }
 });
 
@@ -279,7 +264,7 @@ router.get("/unblock/:id", (req, res) => {
     res.redirect("admin/view-users");
   });
 }catch(err) {
-  res.render("user/404");
+  res.render("admin/404");
 }
 });
 
@@ -292,7 +277,7 @@ router.get("/cancel/:id", (req, res) => {
     res.redirect("/admin/dashboard");
   });
 }catch(err) {
-  res.render("user/404");
+  res.render("admin/404");
 }
 });
 
@@ -304,7 +289,7 @@ router.get("/shipp/:id", (req, res) => {
       res.redirect("/admin/dashboard");
     });
   }catch(err) {
-    res.render("user/404");
+    res.render("admin/404");
   }
 });
 
@@ -316,14 +301,13 @@ router.get("/delivered/:id", (req, res) => {
         res.redirect("/admin/dashboard");
       });
     }catch(err) {
-      res.render("user/404");
+      res.render("admin/404");
     }
   });
     
 //post changeStatus
 router.post("/changeStatus/:id", async (req, res) => {
 try{
-// console.log(req.body.changeStatus + "     order id is     " + req.params.id);
 
 await productHelpers
 .updateStatus(req.body.changeStatus, req.params.id)
@@ -331,7 +315,7 @@ await productHelpers
   res.redirect("/admin/dashboard");
 });
 }catch(err) {
-res.render("user/404");
+res.render("admin/404");
 }
 });
 
@@ -348,7 +332,7 @@ router.get("/coupon", (req, res) => {
     res.render("admin/coupon", { admin: true , coupons});
   })
 }catch(err) {
-  res.render("user/404");
+  res.render("admin/404");
 }
 });
 
@@ -365,7 +349,7 @@ router.post("/coupon", (req, res) => {
 
   }catch(err) {
 
-    res.render("user/404");
+    res.render("admin/404");
   }
 
 });
