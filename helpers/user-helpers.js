@@ -546,6 +546,10 @@ getOrderProducts:(orderId)=>{
  
 generateRazorpay:(orderId,total)=>{
   return new Promise((resolve,reject)=>{
+    let instance = new Razorpay({
+      key_id: 'rzp_test_uhnKcQy1446ov3',
+      key_secret: 'HXM0jx7kZ99P6alTuYGl9D72',
+    });
     console.log('reacged in razorpy');
     var  options={
       amount:total*100,   //amount in smallest currency unit
